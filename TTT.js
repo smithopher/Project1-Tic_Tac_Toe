@@ -10,7 +10,6 @@ $(function() {
                      [null, null, null],
                      [null, null, null]];
     $(".square").on("click", function(event) {
-      console.log(gameBoard);
        switch (moves % 2) {
          case 1:
            var xTurn = function() {
@@ -47,6 +46,14 @@ $(function() {
             ((gameBoard[0][0] === "1") && (gameBoard[1][1] === "1") && (gameBoard[2][2] === "1"))||
             ((gameBoard[0][2] === "1") && (gameBoard[1][1] === "1") && (gameBoard[2][0] === "1"))){
               alert("Player 1 wins!!!");
+              for(var i = 0; i < gameBoard.length; i++){
+                for(var n = 0; n < gameBoard[i].length; n++){
+                  gameBoard[i][n] = null;
+                }
+              }
+              $(".x").hide();
+              $(".o").hide();
+              moves = 1;
         } else if (((gameBoard[0][0] === "0") && (gameBoard[0][1] === "0") && (gameBoard[0][2] === "0"))||
             ((gameBoard[1][0] === "0") && (gameBoard[1][1] === "0") && (gameBoard[1][2] === "0"))||
             ((gameBoard[2][0] === "0") && (gameBoard[2][1] === "0") && (gameBoard[2][1] === "0"))||
@@ -56,10 +63,18 @@ $(function() {
             ((gameBoard[0][0] === "0") && (gameBoard[1][1] === "0") && (gameBoard[2][2] === "0"))||
             ((gameBoard[0][2] === "0") && (gameBoard[1][1] === "0") && (gameBoard[2][0] === "0"))){
               alert("Player 2 wins!!!");
+              for(var i = 0; i < gameBoard.length; i++){
+                for(var n = 0; n < gameBoard[i].length; n++){
+                  gameBoard[i][n] = null;
+                }
+              }
+              $(".x").hide();
+              $(".o").hide();
+              moves = 1;
         }
-    }
-    getWinner();
-  })
-}
+      }
+      getWinner();
+    })
+  }
   gamePlay();
 })
