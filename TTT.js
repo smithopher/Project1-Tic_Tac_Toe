@@ -1,32 +1,32 @@
-$(function(){      //since I pre-filled each square with each svg symbol I need to hide them.
-  $(".o").hide();  //I set this in a separate function from actual gameplay so it loads faster.
+$(function(){
+  $(".o").hide();
   $(".x").hide();
 });
 
 $(function() {
-  var gamePlay = function() {  // Entire game contained in here
+  var gamePlay = function() {
     var player = $("#player");
     var moves = 1;
     var gameBoard = [[null, null, null],
                      [null, null, null],
                      [null, null, null]];
     $(".square").on("click", function(event) {
-       switch (moves % 2) { //switch to alternate player by click
+       switch (moves % 2) {
          case 1:
            var xTurn = function() {
              var xy = $(event.currentTarget).attr("id").replace("r","").split("c");
              var x = parseInt(xy[0]);
              var y = parseInt(xy[1]);
-             if (gameBoard [x][y] === null) { // only make move if square is not taken
-               gameBoard[x][y] = "1"
+             if (gameBoard [x][y] === null) {
+               gameBoard[x][y] = "1";
                var getX = $(event.currentTarget).find(".x");
                getX.show();
                moves+=1;
-             } else { // prevent from over-writing gameBoard value and showing both icons in display
-               alert ("Square is already taken! Choose another square!!!");
+               player.text("2");
+             } else { 
+               alert ("That square is already taken! Choose another square!!!");
              }
-             player.text("2");
-           }
+           };
            xTurn();
            break;
          case 0:
@@ -35,15 +35,15 @@ $(function() {
              var x = parseInt(xy[0]);
              var y = parseInt(xy[1]);
              if (gameBoard[x][y] === null){
-               gameBoard[x][y] = "0"
-               var getO = $(event.currentTarget).find(".o")
+               gameBoard[x][y] = "0";
+               var getO = $(event.currentTarget).find(".o");
                getO.show();
                moves+=1;
+               player.text("1");
              } else {
-               alert("Square is already taken! Choose another square!!!");
+               alert("That square is already taken! Choose another square!!!");
              }
-             player.text("1");
-           }
+           };
            oTurn();
            break;
          }
@@ -64,7 +64,7 @@ $(function() {
               }
               $(".x").hide();
               $(".o").hide();
-              moves = 1
+              moves = 1;
               player.text("1");
         } else if (((gameBoard[0][0] === "0") && (gameBoard[0][1] === "0") && (gameBoard[0][2] === "0"))||
             ((gameBoard[1][0] === "0") && (gameBoard[1][1] === "0") && (gameBoard[1][2] === "0"))||
@@ -75,31 +75,31 @@ $(function() {
             ((gameBoard[0][0] === "0") && (gameBoard[1][1] === "0") && (gameBoard[2][2] === "0"))||
             ((gameBoard[0][2] === "0") && (gameBoard[1][1] === "0") && (gameBoard[2][0] === "0"))){
               alert("Player 2 wins!!!");
-              for(var i = 0; i < gameBoard.length; i++){
-                for(var n = 0; n < gameBoard[i].length; n++){
-                  gameBoard[i][n] = null;
+              for(var a = 0; a < gameBoard.length; a++){
+                for(var b = 0; b < gameBoard[a].length; b++){
+                  gameBoard[a][b] = null;
                 }
               }
               $(".x").hide();
               $(".o").hide();
-              moves = 1
+              moves = 1;
               player.text("1");
         } else if (moves === 10){
           alert("Gridlock! Try again!");
-          for(var i = 0; i < gameBoard.length; i++){
-            for(var n = 0; n < gameBoard[i].length; n++){
-              gameBoard[i][n] = null;
+          for(var c = 0; c < gameBoard.length; c++){
+            for(var d = 0; d < gameBoard[c].length; d++){
+              gameBoard[c][d] = null;
             }
           }
           $(".x").hide();
           $(".o").hide();
-          moves = 1
+          moves = 1;
           player.text("1");
         }
-      }
+      };
       console.log(gameBoard);
       getWinner();
-    })
-  }
+    });
+  };
   gamePlay();
-})
+});
