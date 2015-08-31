@@ -19,7 +19,7 @@ $(function() {
           ((gameBoard[0][2] === "1") && (gameBoard[1][2] === "1") && (gameBoard[2][2] === "1"))||
           ((gameBoard[0][0] === "1") && (gameBoard[1][1] === "1") && (gameBoard[2][2] === "1"))||
           ((gameBoard[0][2] === "1") && (gameBoard[1][1] === "1") && (gameBoard[2][0] === "1"))){
-            alert("Player 1 wins!!!");
+            alert("X wins!!!");
             for(var i = 0; i < gameBoard.length; i++){
               for(var n = 0; n < gameBoard[i].length; n++){
                 gameBoard[i][n] = null;
@@ -38,7 +38,7 @@ $(function() {
           ((gameBoard[0][2] === "0") && (gameBoard[1][2] === "0") && (gameBoard[2][2] === "0"))||
           ((gameBoard[0][0] === "0") && (gameBoard[1][1] === "0") && (gameBoard[2][2] === "0"))||
           ((gameBoard[0][2] === "0") && (gameBoard[1][1] === "0") && (gameBoard[2][0] === "0"))){
-            alert("Player 2 wins!!!");
+            alert("O wins!!!");
             for(var a = 0; a < gameBoard.length; a++){
               for(var b = 0; b < gameBoard[a].length; b++){
                 gameBoard[a][b] = null;
