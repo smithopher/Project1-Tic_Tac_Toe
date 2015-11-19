@@ -209,8 +209,8 @@ $(function() {
                    moves +=1;
                    getWinner();
                 } else if(((gameBoard[2][1] === "1" && gameBoard[2][2] === "1")||
-                   (gameBoard[0][0] === 1 && gameBoard[1][0] === 1)||
-                   (gameBoard[0][2] === 1 && gameBoard[1][1] === 1)) &&
+                   (gameBoard[0][0] === "1" && gameBoard[1][0] === "1")||
+                   (gameBoard[0][2] === "1" && gameBoard[1][1] === "1")) &&
                    (gameBoard[2][0] === null)) {
                    $("#r2c0 .o").show();
                    gameBoard[2][0] = "0";
